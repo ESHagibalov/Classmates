@@ -13,7 +13,7 @@ Classmates - social network for photos and communication.
 ### Sign in for users
 
 ```
-/api/auth/signin
+POST /api/auth/signin
 ```
 ```json
 {
@@ -23,7 +23,7 @@ Classmates - social network for photos and communication.
 ```
 ### Sign up for new users
 ```
-/api/auth/signup
+POST /api/auth/signup
 ```
 ```json
 {
@@ -33,12 +33,12 @@ Classmates - social network for photos and communication.
         "role": ["user"]
 }
 ```
-### Get special content for different roles (Request body is empty. AccessToken of authorised user needed)
+### Get special content for different roles (AccessToken of authorised user needed)
 ```
-/api/test/all
-/api/test/user
-/api/test/mod
-/api/test/admin
+GET /api/test/all
+GET /api/test/user
+GET /api/test/mod
+GET /api/test/admin
 ```
 
 ## License
