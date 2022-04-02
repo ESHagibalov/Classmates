@@ -29,8 +29,8 @@ Classmates - social network for photos and communication.
 {
 	"username": "user",
 	"password": "password",
-    "email": "user@mail.com",
-    "role": ["user"]
+        "email": "user@mail.com",
+        "role": ["user"]
 }
 ```
 ### Get special content for different roles (Request body is empty. AccessToken of authorised user needed)
