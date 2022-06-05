@@ -3,10 +3,12 @@ package com.classmates.demo.models;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.List;
@@ -45,6 +47,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @ManyToMany
+    @Nullable
     @JoinTable(
             name = "user_subscriptions",
             joinColumns = @JoinColumn(name = "subscriber_id"),
@@ -57,6 +60,7 @@ public class User {
     private Set<User> subscriptions = new HashSet<>();
 
     @ManyToMany
+    @Nullable
     @JoinTable(
             name = "user_subscriptions",
             joinColumns = @JoinColumn(name = "channel_id"),
@@ -71,6 +75,7 @@ public class User {
 
     @Setter(AccessLevel.PROTECTED)
     @ToString.Exclude
+    @Nullable
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = false, cascade = CascadeType.ALL)
     private List<Post> posts;
 
