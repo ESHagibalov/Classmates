@@ -1,4 +1,4 @@
-# Classmates backend
+## Classmates backend
 
 Classmates - social network for photos and communication.
 
@@ -8,9 +8,11 @@ Classmates - social network for photos and communication.
 [Design in figma](https://www.figma.com/file/0ircFNNzFCJgQgqTf5WosA/%D0%9E%D0%B4%D0%BD%D0%BE%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BD%D0%B8%D0%BA%D0%B8?node-id=0%3A1)
 
 
-## Api methods
+## API
 
-### Sign in for users
+### Sign in/Sign up actions
+---
+#### Sign in for users
 
 ```
 POST /api/auth/signin
@@ -21,7 +23,7 @@ POST /api/auth/signin
 	"password": "password"
 }
 ```
-### Sign up for new users
+#### Sign up for new users
 ```
 POST /api/auth/signup
 ```
@@ -33,12 +35,55 @@ POST /api/auth/signup
         "role": ["user"]
 }
 ```
-### Get special content for different roles (AccessToken of authorised user needed)
+#### Get special content for different roles (AccessToken of authorised user needed)
 ```
 GET /api/test/all
 GET /api/test/user
 GET /api/test/mod
 GET /api/test/admin
+```
+### Search module
+---
+#### Get user by username
+```
+POST /api/search/user
+```
+```json
+{
+	"username": "user"
+}
+```
+
+#### Get user by id
+```
+GET /api/profile/get/{id}
+```
+
+### Profile actions
+---
+#### Subscribe/unsubscribe user
+```
+POST /api/profile/subscribe/{channelId}
+```
+
+#### Get posts of other user by id
+```
+GET /api/profile/post/get/{id}
+```
+
+#### Delete post of current user
+```
+GET /api/profile/post/delete_my/{post_id}
+```
+
+#### Add post for current user
+```
+POST /api/profile/post/add_post
+```
+Request params:
+```
+String content
+File image
 ```
 
 ## License
