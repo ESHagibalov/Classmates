@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,9 +26,10 @@ public class Post {
 
 
 
-    public Post(String content, User user) {
+    public Post(String content, User user, String path) {
         this.content = content;
         this.user = user;
+        this.path = path;
     }
 
     @NotNull
@@ -42,6 +44,16 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private User user;
+
+    @Column(nullable = false, name = "path", length = 64)
+    private String path;
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (path == null || id == null) return null;
+
+        return "/user-photos/" + id + "/" + path;
+    }
 
     @Override
     public boolean equals(Object o) {

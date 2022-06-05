@@ -21,14 +21,9 @@ public class PostsService {
         this.postsRepository = postsRepository;
     }
 
-//    public User addPost(User user, Post post) {
-//        List<Post> posts = user.getPosts();
-//        posts.add(post);
-//        return userRepository.save(user);
-//    }
 
-    public void create(Post post, User user) {
+    public Post create(Post post, User user) {
         post.setUser(user);
-        Post updatedPost = postsRepository.save(post);
+        return postsRepository.save(post);
     }
 }

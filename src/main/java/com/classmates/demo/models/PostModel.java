@@ -10,9 +10,12 @@ public class PostModel {
 
     Long userId;
 
-    public PostModel(Long id, String content, Long userId) {
+    String path;
+
+    public PostModel(Long id, String content, Long userId, String path) {
         this.id = id;
         this.content = content;
         this.userId = userId;
+        this.path = path;
     }
 }

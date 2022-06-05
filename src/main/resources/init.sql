@@ -36,9 +36,10 @@ ALTER TABLE subscriptions
 
 CREATE TABLE postinfo
 (
-    id      BIGINT NOT NULL,
+    id      BIGINT      NOT NULL,
     content VARCHAR(255),
-    user_id BIGINT NOT NULL,
+    user_id BIGINT      NOT NULL,
+    path    VARCHAR(64) NOT NULL,
     CONSTRAINT pk_postinfo PRIMARY KEY (id)
 );
 
