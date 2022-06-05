@@ -2,14 +2,14 @@ package com.classmates.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -68,6 +68,12 @@ public class User {
     )
     private Set<User> subscribers = new HashSet<>();
 
+
+    @Setter(AccessLevel.PROTECTED)
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = false, cascade = CascadeType.ALL)
+    private List<Post> posts;
+
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
@@ -77,6 +83,7 @@ public class User {
     public User() {
 
     }
+
 
     @Override
     public boolean equals(Object o) {

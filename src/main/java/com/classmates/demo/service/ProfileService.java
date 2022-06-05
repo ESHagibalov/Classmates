@@ -18,13 +18,13 @@ public class ProfileService {
         this.userRepository = userRepository;
     }
 
-    public User changeSubscription(User channel, Optional<User> subscriber) {
+    public User changeSubscription(User channel, User subscriber) {
         Set<User> subscribers = channel.getSubscribers();
 
-        if (subscribers.contains(subscriber.get())) {
-            subscribers.remove(subscriber.get());
+        if (subscribers.contains(subscriber)) {
+            subscribers.remove(subscriber);
         } else {
-            subscribers.add(subscriber.get());
+            subscribers.add(subscriber);
         }
 
         return userRepository.save(channel);
