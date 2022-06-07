@@ -85,7 +85,14 @@ Request params:
 String content
 File image
 ```
-
+#### Get subscribtions posts
+```
+POST /api/profile/get/news
+```
+#### Get user subscribers by id
+```
+GET /api/profile/get_subscribers/{id}
+```
 
 
 ## License
